@@ -1,0 +1,33 @@
+# action.yml
+name: 'Armory Deploy Action'
+description: 'Deploy to Kubernetes and AWS EC2'
+inputs:
+  accounts:
+    description: Comma separated list of accounts you want to deploy to
+    required: true
+  application:
+    description: Application name
+    required: true
+  cloudProvider:
+    description: Target cloud provider (kubernetes or aws-ec2)
+    required: true
+  baseUrl:
+    description: Armory Deploy API URL
+    required: true
+  config:
+    description: Armory Deploy API auth configuration
+    required: true
+  wait:
+    description: Wait for deployment to complete before exiting
+    required: false
+    default: false
+  manifest:
+    description: If cloudProvider is kubernetes, optional inline manifest
+    required: false
+  manifestPath:
+    description: If cloudProvider is kubernetes, optional path to manifest files
+    required: false
+outputs: {}
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
